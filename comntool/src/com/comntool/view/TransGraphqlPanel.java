@@ -30,6 +30,7 @@ import com.comntool.constcla.comn.ComnConst;
 import com.comntool.ext.ComnMenu;
 import com.comntool.ext.ComnViewSet;
 import com.comntool.ext.KFileChooser;
+import com.comntool.ext.LineNumberHeaderView;
 import com.comntool.util.utility.CodeUtil;
 import com.comntool.util.utility.Comn;
 import com.comntool.util.utility.GraphqlUtil;
@@ -44,6 +45,8 @@ public class TransGraphqlPanel extends JPanel{
 	private static final long serialVersionUID = 23231L;
     private final JTextArea javaClaTA = new JTextArea();// java错误码枚举文件路径显示
     private JScrollPane javaClaSP = new JScrollPane(javaClaTA);
+
+    private LineNumberHeaderView view = new LineNumberHeaderView(); // 行号
     private final JTextArea javaLoadTA = new JTextArea();// 加载的java类的文件内容
     private JScrollPane javaLoadSP = new JScrollPane(javaLoadTA);
     private final JTextArea graphqlObjTA = new JTextArea();// graphql对象定义
@@ -87,6 +90,7 @@ public class TransGraphqlPanel extends JPanel{
 		javaClaBox.setBounds(15, ComnViewSet.getBottomY(memoInfoBox, 5), 990, 65);
 		jPanel.add(javaClaBox);
 
+		javaLoadSP.setRowHeaderView(view); // 设置行号
 		Box javaLoadBox=Box.createHorizontalBox();
 		javaLoadBox.add(javaLoadSP);// 加载的java文件内容
 		javaLoadBox.setBounds(15, ComnViewSet.getBottomY(javaClaBox, 5), 990, 195);
